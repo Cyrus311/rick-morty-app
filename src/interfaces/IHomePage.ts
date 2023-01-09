@@ -1,8 +1,8 @@
-import { GetCharacters_characters } from "../services/characterService/__generated__/GetCharacters";
+import { GetCharacters } from "../services/characterService/__generated__/GetCharacters";
 
 export interface IHomePageProps {}
 export interface IHomePageState {
-  characters: GetCharacters_characters | null;
+  characters: GetCharacters["characters"] | null;
   selectedCharacter: {};
   isError: boolean;
   isSuccess: boolean;

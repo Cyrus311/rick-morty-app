@@ -2,7 +2,9 @@ import { apolloClient } from "../../graphql";
 import { GET_CHARACTERS } from "./queries";
 import { GetCharacters } from "./__generated__/GetCharacters";
 
-const getCharacters = async (page: Number): Promise<GetCharacters> => {
+const getCharacters = async (
+  page: Number
+): Promise<GetCharacters["characters"]> => {
   try {
     const response = await apolloClient.query({
       query: GET_CHARACTERS,
@@ -14,7 +16,7 @@ const getCharacters = async (page: Number): Promise<GetCharacters> => {
 
     console.log("DATA: ", response.data);
 
-    return response.data;
+    return response.data.characters;
   } catch (error) {
     throw error;
   }

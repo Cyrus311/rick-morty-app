@@ -12,12 +12,12 @@ const initialState: IHomePageState = {
 };
 
 //! Get all characters
-const getCharacters = createAsyncThunk(
+export const getCharacters = createAsyncThunk(
   "characters/getAll",
   async (page: number, thunkAPI) => {
     try {
       const result = await characterService.getCharacters(page);
-      return result.characters;
+      return result;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }

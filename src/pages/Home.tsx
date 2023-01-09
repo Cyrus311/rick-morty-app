@@ -1,21 +1,20 @@
 import React, { useEffect } from "react";
 import { IHomePageProps } from "../interfaces/IHomePage";
-import characterService from "../services/characterService";
+import { useAppSelector, useAppDispatch } from "../utils/hooks";
+import { getCharacters } from "../store/reducers/characterSlice";
+import TitlebarImageList from "../components/Characters/TitlebarImageList";
 
 const Home = (props: IHomePageProps) => {
-  const fetchCharacter = async () => {
-    const characters = await characterService.getCharacters(1).catch((err) => {
-      console.log("Error: ", err);
-    });
-
-    console.log(characters);
-  };
+  const chars = useAppSelector((state) => state.character);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    fetchCharacter();
-  }, []);
+    dispatch(getCharacters(1));
+  }, [dispatch]);
 
-  return <h1>Home</h1>;
+  return chars.characters ? (
+    <TitlebarImageList data={chars.characters.results} />
+  ) : null;
 };
 
 export default Home;
