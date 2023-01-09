@@ -4,6 +4,7 @@ import { Provider } from "react-redux";
 import { store } from "./store/index";
 import { ApolloProvider } from "@apollo/client";
 import { apolloClient } from "./graphql";
+import { BrowserRouter as Router } from "react-router-dom";
 import App from "./App";
 import "./index.css";
 
@@ -14,7 +15,9 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <ApolloProvider client={apolloClient}>
-        <App />
+        <Router>
+          <App />
+        </Router>
       </ApolloProvider>
     </Provider>
   </React.StrictMode>
