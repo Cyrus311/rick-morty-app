@@ -14,8 +14,6 @@ const getCharacters = async (
     if (!response || !response.data)
       throw new Error("Cannot get character list!");
 
-    console.log("DATA: ", response.data);
-
     return response.data.characters;
   } catch (error) {
     throw error;

@@ -7,7 +7,6 @@ import InfoIcon from "@mui/icons-material/Info";
 import { ITitlebarImageListProps } from "./types";
 
 export default function TitlebarImageList(props: ITitlebarImageListProps) {
-  console.log("props.data", props);
   return (
     <ImageList sx={{ maxWidth: 960 }} cols={4}>
       {props.data.map((item: any) => (
