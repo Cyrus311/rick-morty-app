@@ -5,8 +5,8 @@ import Routes from "./routes/index";
 
 function App() {
   return (
-    <Container>
-      <Header title="Rick and Morty" />
+    <Container height="11vh" bgColor="#b29ce0">
+      <Header title="Rick and Morty App" cssClass="mainHeader" />
       <Routes />
     </Container>
   );

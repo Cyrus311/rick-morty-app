@@ -7,7 +7,7 @@ const MainContainer = (props: IMainContainerProps) => {
   return (
     <>
       <Container maxWidth="md" className={styles.mainContainer}>
-        <Box sx={{ bgcolor: props.bgColor ?? "#b29ce0", height: "100vh" }}>
+        <Box sx={{ bgcolor: props.bgColor, height: props.height }}>
           {props.children}
         </Box>
       </Container>
