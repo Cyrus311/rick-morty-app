@@ -1,7 +1,7 @@
 import { lazy } from "react";
 import Loadable from "../components/UI/Loadable";
 
-const Home = Loadable(lazy(() => import("../pages/Home")));
+const Home = Loadable(lazy(() => import("../pages/CharacterHome")));
 
 const MainRoutes = {
   path: "",

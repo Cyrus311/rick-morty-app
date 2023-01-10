@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { IHomePageProps } from "../interfaces/IHomePage";
+import { ICharacterHomePageProps } from "../interfaces/ICharacterHomePage";
 import { useAppSelector, useAppDispatch } from "../utils/hooks";
 import { getCharacters } from "../store/reducers/characterSlice";
 import TitlebarImageList from "../components/Characters/TitlebarImageList";
 import { Button } from "@mui/material";
 import Loader from "../components/UI/Loader/Loader";
 
-const Home = (props: IHomePageProps) => {
+const Home = (props: ICharacterHomePageProps) => {
   const [page, setPage] = useState(1);
   const [charList, setCharList] = useState([]);
   const { characters, isLoading } = useAppSelector((state) => state.character);

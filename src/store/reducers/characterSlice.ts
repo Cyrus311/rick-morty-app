@@ -1,8 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { IHomePageState } from "../../interfaces/IHomePage";
+import { ICharacterHomePageState } from "../../interfaces/ICharacterHomePage";
 import characterService from "../../services/characterService/index";
 
-const initialState: IHomePageState = {
+const initialState: ICharacterHomePageState = {
   characters: null,
   selectedCharacter: {},
   isError: false,
