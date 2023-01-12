@@ -20,5 +20,5 @@ code {
 }
 
 .mainHeader {
-  justify-content: center;
+  justify-content: space-between;
 }
