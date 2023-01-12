@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { ICharacterDetailPageProps } from "../interfaces/ICharacterDetailPage";
 import { useAppSelector, useAppDispatch } from "../utils/hooks";
-import { getCharacter } from "../store/reducers/characterSlice";
+import { getCharacter, reset } from "../store/reducers/characterSlice";
 import TitlebarImageList from "../components/Characters/TitlebarImageList";
 import { Button } from "@mui/material";
 import Loader from "../components/UI/Loader/Loader";
@@ -19,12 +19,16 @@ const CharacterDetail = (props: ICharacterDetailPageProps) => {
     if (isError) {
       console.log("Error:", message);
     }
+
     const characterId = location.state.characterId;
     if (!characterId) {
       navigate("/");
     }
 
     dispatch(getCharacter(characterId));
+    return () => {
+      dispatch(reset());
+    };
   }, [navigate, dispatch, isError, message, location]);
 
   if (isLoading) {
