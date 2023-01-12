@@ -12,7 +12,7 @@ const getCharacter = async (id: Number): Promise<GetCharacter["character"]> => {
 
     if (!response || !response.data) throw new Error("Can not get character!");
 
-    return response.data;
+    return response.data.character;
   } catch (error) {
     throw error;
   }
