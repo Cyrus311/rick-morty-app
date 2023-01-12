@@ -4,7 +4,7 @@ import characterService from "../../services/characterService/index";
 
 const initialState: ICharacterHomePageState = {
   characters: null,
-  selectedCharacter: {},
+  selectedCharacter: null,
   isError: false,
   isSuccess: false,
   isLoading: false,
@@ -24,7 +24,20 @@ export const getCharacters = createAsyncThunk(
   }
 );
 
-export const characterSlice = createSlice({
+//! Get character
+export const getCharacter = createAsyncThunk(
+  "characters/getDetail",
+  async (id: number, thunkAPI) => {
+    try {
+      const result = await characterService.getCharacter(id);
+      return result;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
+const characterSlice = createSlice({
   name: "character",
   initialState,
   reducers: {
@@ -49,6 +62,24 @@ export const characterSlice = createSlice({
           state.message = action.error;
         }
         state.characters = null;
+      })
+      .addCase(getCharacter.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getCharacter.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.selectedCharacter = payload;
+      })
+      .addCase(getCharacter.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        if (action.payload) {
+          state.message = action.payload;
+        } else {
+          state.message = action.error;
+        }
+        state.selectedCharacter = null;
       });
   }
 });

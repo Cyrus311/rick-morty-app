@@ -9,17 +9,23 @@ import Loader from "../components/UI/Loader/Loader";
 const Home = (props: ICharacterHomePageProps) => {
   const [page, setPage] = useState(1);
   const [charList, setCharList] = useState([]);
-  const { characters, isLoading } = useAppSelector((state) => state.character);
+  const { characters, isLoading, isError, message } = useAppSelector(
+    (state) => state.character
+  );
   const dispatch = useAppDispatch();
 
   useEffect(() => {
+    if (isError) {
+      console.log("Error:", message);
+    }
+
     dispatch(getCharacters(page));
     if (characters) {
       setCharList((prevState) => [
         ...new Set(prevState.concat(characters.results as any))
       ]);
     }
-  }, [dispatch, page, characters]);
+  }, [dispatch, page, characters, isError, message]);
 
   return (
     <>
