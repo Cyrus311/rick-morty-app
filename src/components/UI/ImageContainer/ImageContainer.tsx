@@ -5,11 +5,7 @@ import { IImageContainerProps } from "./types";
 const ImageContainer = (props: IImageContainerProps) => {
   return (
     <div className={`${styles.imageContainer} ${props.cssClass}`}>
-      <img
-        src={`https://image.tmdb.org/t/p/w200/${props.src}`}
-        alt={props.alt}
-        sizes=""
-      />
+      <img src={props.src} alt={props.alt} sizes="" />
     </div>
   );
 };
