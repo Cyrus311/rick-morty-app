@@ -6,6 +6,7 @@ import { getCharacter, reset } from "../store/reducers/characterSlice";
 import TitlebarImageList from "../components/Characters/TitlebarImageList";
 import { Button } from "@mui/material";
 import Loader from "../components/UI/Loader/Loader";
+import ImageContainer from "../components/UI/ImageContainer/ImageContainer";
 
 const CharacterDetail = (props: ICharacterDetailPageProps) => {
   const navigate = useNavigate();
@@ -37,8 +38,42 @@ const CharacterDetail = (props: ICharacterDetailPageProps) => {
 
   return (
     <>
-      <h1>DETAIL</h1>
-      <h6>{selectedCharacter?.name}</h6>
+      {selectedCharacter ? (
+        <div>
+          <h3>{selectedCharacter.name}</h3>
+          {selectedCharacter.image && (
+            <ImageContainer
+              src={selectedCharacter.image}
+              alt={selectedCharacter.name ?? "Image"}
+            />
+          )}
+          <p>
+            <h6>
+              <b>Status:</b> {selectedCharacter.status}
+            </h6>
+          </p>
+          <p>
+            <h6>
+              <b>Species:</b> {selectedCharacter.species}
+            </h6>
+          </p>
+          <p>
+            <h6>
+              <b>Gender:</b> {selectedCharacter.gender}
+            </h6>
+          </p>
+          <p>
+            <h6>
+              <b>Origin:</b> {selectedCharacter.origin?.name}
+            </h6>
+          </p>
+          <p>
+            <h6>
+              <b>Location:</b> {selectedCharacter.location?.name}
+            </h6>
+          </p>
+        </div>
+      ) : null}
     </>
   );
 };
