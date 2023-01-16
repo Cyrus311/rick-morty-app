@@ -3,8 +3,6 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { ICharacterDetailPageProps } from "../interfaces/ICharacterDetailPage";
 import { useAppSelector, useAppDispatch } from "../utils/hooks";
 import { getCharacter, reset } from "../store/reducers/characterSlice";
-import TitlebarImageList from "../components/Characters/TitlebarImageList";
-import { Button } from "@mui/material";
 import Loader from "../components/UI/Loader/Loader";
 import ImageContainer from "../components/UI/ImageContainer/ImageContainer";
 
