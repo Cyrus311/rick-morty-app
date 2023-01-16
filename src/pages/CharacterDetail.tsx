@@ -47,31 +47,31 @@ const CharacterDetail = (props: ICharacterDetailPageProps) => {
               alt={selectedCharacter.name ?? "Image"}
             />
           )}
-          <p>
+          <span>
             <h6>
               <b>Status:</b> {selectedCharacter.status}
             </h6>
-          </p>
-          <p>
+          </span>
+          <span>
             <h6>
               <b>Species:</b> {selectedCharacter.species}
             </h6>
-          </p>
-          <p>
+          </span>
+          <span>
             <h6>
               <b>Gender:</b> {selectedCharacter.gender}
             </h6>
-          </p>
-          <p>
+          </span>
+          <span>
             <h6>
               <b>Origin:</b> {selectedCharacter.origin?.name}
             </h6>
-          </p>
-          <p>
+          </span>
+          <span>
             <h6>
               <b>Location:</b> {selectedCharacter.location?.name}
             </h6>
-          </p>
+          </span>
         </div>
       ) : null}
     </>
